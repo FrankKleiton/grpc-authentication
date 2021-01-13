@@ -48,6 +48,9 @@ function getServer(api) {
   });
 
   const { proto_user } = grpc.loadPackageDefinition(userDefinition);
+
+  api.addMessages(proto_user);
+  
   const server = new grpc.Server();
   server.addService(proto_user.UserService.service, {
     register: api.register,
