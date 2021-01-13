@@ -1,0 +1,12 @@
+{
+  "name": "micro-user",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.5",
+    "dotenv": "^8.2.0",
+    "grpc": "^1.24.4",
+    "mongodb": "^3.6.3"
+  }
+}
