@@ -5,8 +5,8 @@ package proto_user;
 service UserService {
   rpc register(Register) returns (User);
   rpc login(Login) returns (User);
-  rpc verify(Verify) returns (PublicUser);
-  rpc getUser(UserIdentificator) returns (PublicUser); 
+  rpc verify(Verify) returns (User);
+  rpc getUser(UserIdentificator) returns (User); 
 }
 
 message Register {
@@ -19,7 +19,6 @@ message User {
   int32 id = 1;
   string name = 2;
   string email = 3;
-  string password = 4;
 }
 
 message Login {
@@ -29,12 +28,6 @@ message Login {
 
 message Verify {
   string token = 1;
-}
-
-message PublicUser {
-  int32 id = 1;
-  string email = 2;
-  string name = 3;
 }
 
 message UserIdentificator {
