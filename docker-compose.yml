@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  micro-user:
+    build:
+      context: ./micro-user
+    environment:
+      - ./micro-user/.env
+    ports:
+      - 8080:50051
