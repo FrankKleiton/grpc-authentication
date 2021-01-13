@@ -6,7 +6,7 @@ service UserService {
   rpc register(Register) returns (User);
   rpc login(Login) returns (User);
   rpc verify(Verify) returns (PublicUser);
-  rpc getUser(UserIdentificator) returns (PublicUser) 
+  rpc getUser(UserIdentificator) returns (PublicUser); 
 }
 
 message Register {
