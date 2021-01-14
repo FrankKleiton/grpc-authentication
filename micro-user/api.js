@@ -1,34 +1,29 @@
 const bcrypt = require('bcrypt');
-
-class Api {
-  mongo = null;
-  grpc = null;
-  messages = null;
-  
+const auth =  require('./auth');
+class Api {  
   constructor(db, grpc) {
     this.mongo = db;
     this.grpc = grpc;
   }
 
   addMessages(messages) {
-    messages = messages;
+    this.messages = messages;
   }
 
-  register(call, callback) {
-    const users = this.db.collection('users');
+  register = (call, callback) => {
+    const users = this.mongo.collection('users');
 
-    bcrypt.hash(call.request.getPassword(), 10, (err, hash) => {
-      let user = { name: call.request.getName(), email: call.request.getEmail(), password: hash };
+    bcrypt.hash(call.request.password, 10, (err, hash) => {
+      let user = { name: call.request.name, email: call.request.email, password: hash };
       users
         .insertOne(user)
         .then(() => {
-          console.log(this.messages);
-          let response = new this.messages.User();
-          response.setId(user._id.toString());
-          response.setName(user.name);
-          response.setEmail(user.email);
-          response.setName(user.name);
-          response.setToken(auth.generateToken(user));
+          const response = {};
+          response.id = user._id.toString();
+          response.name = user.name;
+          response.email = user.email;
+          response.name = user.name;
+          response.token = auth.generateToken(user);
           callback(null, response);
         });
     });

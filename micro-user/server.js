@@ -37,7 +37,7 @@ function connectDatabase() {
 }
 
 function getServer(api) {
-  const PROTO_PATH = path.resolve('..', 'protos', 'user.proto');
+  const PROTO_PATH = path.resolve('protos', 'user.proto');
 
   const userDefinition = protoLoader.loadSync(PROTO_PATH, {
     keepCase: true,
