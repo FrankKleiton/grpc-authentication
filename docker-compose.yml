@@ -4,7 +4,11 @@ services:
   micro-user:
     build:
       context: ./micro-user
-    environment:
+    env_file:
       - ./micro-user/.env
     ports:
       - 8080:50051
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /protos

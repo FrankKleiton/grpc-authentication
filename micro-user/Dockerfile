@@ -1,9 +1,9 @@
-FROM node:15
+FROM node:12.20.1-alpine3.9
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package.json .
 COPY . .
+RUN yarn
 
 EXPOSE 50051
-CMD ["node", "index.js"]
+CMD ["node", "./micro-user/server.js"]
