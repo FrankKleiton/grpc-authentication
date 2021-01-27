@@ -4,7 +4,7 @@ package proto_user;
 
 service UserService {
   rpc register(Register) returns (RegisterResponse);
-  rpc login(Login) returns (User);
+  rpc login(Login) returns (Verify);
   rpc verify(Verify) returns (User);
   rpc getUser(UserIdentificator) returns (User); 
 }

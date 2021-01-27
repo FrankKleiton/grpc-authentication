@@ -20,11 +20,9 @@ const client = new UserService(
   grpc.credentials.createInsecure()
 );
 
-let registerRequest = {};
-registerRequest.name = 'hello';
-registerRequest.email = 'hello@hello.com';
-registerRequest.password = 'hello';
-client.register(registerRequest, function (err, response) {
-  console.log(err);
+let loginRequest = {};
+loginRequest.email = 'hello@hello.com';
+loginRequest.password = 'hello';
+client.login(loginRequest, function (err, response) {
   console.log(response);
 });
