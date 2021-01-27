@@ -22,7 +22,7 @@ class Api {
           response.id = user._id.toString();
           response.name = user.name;
           response.email = user.email;
-          response.name = user.name;
+          response.password = user.password;
           response.token = auth.generateToken(user);
           callback(null, response);
         });
