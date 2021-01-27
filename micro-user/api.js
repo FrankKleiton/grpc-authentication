@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const auth = require('./auth');
+
 class Api {
   constructor(db, grpc) {
     this.mongo = db;
@@ -64,19 +65,17 @@ class Api {
   };
 
   verify(call, callback) {
-    callback(null, {
-      id: 1,
-      email: 'test',
-      name: 'test',
-    });
-  }
-
-  getUser(call, callback) {
-    callback(null, {
-      id: 1,
-      email: 'test',
-      name: 'test',
-    });
+    auth
+      .verify(call.request.token)
+      .then((user) => {
+        callback(null, user);
+      })
+      .catch((err) => {
+        callback({
+          code: 401,
+          message: 'Invalid token',
+        });
+      });
   }
 }
 

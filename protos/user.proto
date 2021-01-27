@@ -6,7 +6,6 @@ service UserService {
   rpc register(Register) returns (RegisterResponse);
   rpc login(Login) returns (Verify);
   rpc verify(Verify) returns (User);
-  rpc getUser(UserIdentificator) returns (User); 
 }
 
 message Register {
@@ -35,8 +34,4 @@ message Login {
 
 message Verify {
   string token = 1;
-}
-
-message UserIdentificator {
-  int32 id = 1;
 }

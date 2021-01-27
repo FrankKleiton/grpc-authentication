@@ -56,7 +56,6 @@ function getServer(api) {
     register: api.register,
     login: api.login,
     verify: api.verify,
-    getUser: api.getUser,
   });
   const address = process.env.HOST + ':' + process.env.PORT;
 

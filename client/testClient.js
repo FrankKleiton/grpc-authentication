@@ -24,5 +24,6 @@ let loginRequest = {};
 loginRequest.email = 'hello@hello.com';
 loginRequest.password = 'hello';
 client.login(loginRequest, function (err, response) {
+  console.log(err);
   console.log(response);
 });
